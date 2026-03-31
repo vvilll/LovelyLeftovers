@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/webFavi.png">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="headerLogo">
+            <a href="index.html">
+                <img src="images/dbLogo.png" alt="dev" width="150" height="150">
+            </a>
+        </div>
+        <div class="headerNav">
+            <nav class="navBar">
+                <div id="nav1"><a id="navA1" href="index.html">Home</a></div>
+                <div id="nav2"><a id="navA2" href="content.html">Find A Match</a></div>
+                <div id="nav3"><a id="navA3" href="about.html">Why Us?</a></div>
+                <div id="nav4"><a id="navA4" href="login.html">Login/Signup</a></div>
+            </nav>
+        </div>
+        <div class="usrIcon">
+            <a href="account.html"><img src="images/icon.png" alt="dev" width="100px" height="100px"></a>
+        </div>
+    </div>   
+    <form class="loginForm">
+        <div class="formHeader">
+            <h1>Tell Us About Yourself</h1>
+        </div>
+        <div class="itemContainers">
+            <label for="age">Date of Birth</label>
+            <input type="date" id="age"/>
+        </div>
+        <div class="itemContainers" >
+            <label for="job">Occupation</label>
+            <input class="textBoxes" type="text" name="job"/>
+        </div>
+        <div class="itemContainers" >
+            <label for="fFood">Favorite Food</label>
+            <input class="textBoxes" type="text" name="fFood" required pattern="[A-Za-z ]+" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')" />
+        </div>
+        <div class="itemContainers">
+            <label for="hobby">Hobbies</label>
+            <input class="textBoxes" type="text" name="hobby" placeholder="Hobby1, Hobby2, ..." />
+        </div>
+        <div class="formBtn">
+                <input type="reset" id="reset" value="Reset">
+                <input type="submit" id="submit" value="Submit" >
+        </div>
+    </form>
+</body>
+<script>
+    const currentPath = window.location.pathname.split("/").pop();
+    if(currentPath[0] === 's' && currentPath[1] === 'o' && currentPath[2] === 'i' && currentPath[3] === 'g' && currentPath[4] === 'n' && currentPath[5] === 'u' && currentPath[6] === 'p' && currentPath[7] === '.' && currentPath[8] === 'h' && currentPath[9] === 't' && currentPath[10] === 'm' && currentPath[11] === 'l'){
+        document.getElementById("nav4").style.background = "#F8BBD0"
+        document.getElementById("navA4").style.color = "#C2185B"
+    }
+</script>
+</html>
