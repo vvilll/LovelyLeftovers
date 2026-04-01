@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/webFavi.png">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="headerLogo">
+            <a href="index.html">
+                <img src="images/dbLogo.png" alt="dev" width="150" height="150">
+            </a>
+        </div>
+        <div class="headerNav">
+            <nav class="navBar">
+                <div class="navBtn" id="nav1"><a id="navA1" href="index.html">Home</a></div>
+                <div class="navBtn" id="nav3"><a id="navA3" href="about.html">Why Us?</a></div>
+                <div class="navBtn" id="nav4"><a id="navA4" href="signup.html">Login/Signup</a></div>
+            </nav>
+        </div>
+    </div>   
+    <form class="loginForm">
+        <div class="formHeader">
+            <h1>Login</h1>
+        </div>
+        <div class="itemContainers">
+            <label for="email">E-mail</label>
+            <input class="textBoxes" type="text" id="email" name="email" placeholder="name@example.com"/>
+        </div>
+        <div class="itemContainers">
+            <label for="passwd">Password</label>
+            <input class="textBoxes" type="password" id="passwd" name="passwd"/>
+        </div>
+        <div class="formBtn">
+                <input type="submit" id="submit" value="Login" >
+        </div>
+        <div id="nav4"><a id="navA4" href="signup.html">Dont have an Account? Click Here</a></div>
+    </form>
+
+</body>
+<script>
+    const currentPath = window.location.pathname.split("/").pop();
+    if(currentPath[0] === 'l' && currentPath[1] === 'o' && currentPath[2] === 'g' && currentPath[3] === 'i' && currentPath[4] === 'n' && currentPath[5] === '.' && currentPath[6] === 'h' && currentPath[7] === 't' && currentPath[8] === 'm' && currentPath[9] === 'l'){
+        document.getElementById("nav4").style.background = "#F8BBD0"
+        document.getElementById("navA4").style.color = "#C2185B"
+    }
+</script>
+</html>
