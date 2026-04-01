@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/webFavi.png">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+        background-image: url('images/homeBG.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<body>
+    <div class="header">
+        <div class="headerLogo">
+            <a href="index.html">
+                <img src="images/dbLogo.png" alt="dev">
+            </a>
+        </div>
+        <div class="headerNav">
+            <nav class="navBar">
+                <div class="navBtn" id="nav1"><a id="navA1" href="index.html">Home</a></div>
+                <div class="navBtn" id="nav3"><a id="navA3" href="about.html">Why Us?</a></div>
+                <div class="navBtn" id="nav4"><a id="navA4" href="signup.php">Login/Signup</a></div>
+            </nav>
+        </div>
+    </div>
+    <div class="body">
+        <div class="bodyText">
+            <h1>Find Your Perfect Pear</h1>
+            <p>Unsuccessful on mainstream dating apps? Join today, what you’ll find here is nacho average romance.</p>
+        </div>
+        <form class="bodyForm">
+            <h1>Login</h1>
+            <div>
+                <label for="tIn">Email</label><br>
+                <input class="textBoxes" type="text" id="tIn"><br>
+            </div>
+            <div>
+                <label for="tIn2">Password</label><br>
+                <input class="textBoxes" type="text" id="tIn2"><br>
+            </div>
+            <div class="formBtn"><input type="submit"></div>
+        </form>
+    </div>
+</body>
+<script>
+    const currentPath = window.location.pathname.split("/").pop();
+    if(currentPath[0] === 'i' && currentPath[1] === 'n' && currentPath[2] === 'd' && currentPath[3] === 'e' && currentPath[4] === 'x' && currentPath[5] === '.' && currentPath[6] === 'h' && currentPath[7] === 't' && currentPath[8] === 'm' && currentPath[9] === 'l'){
+        document.getElementById("nav1").style.background = "#F8BBD0"
+        document.getElementById("navA1").style.color = "#C2185B"
+    }
+</script>
+</html>
