@@ -1,0 +1,315 @@
+* {
+    font-family: "Chewy", system-ui;
+    color: #333333;
+
+    margin: 0;
+}
+body {
+    background-color: #FAF9F6 ;
+}
+
+/*Nav bar style*/
+.header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+.headerNav {
+    display: flex;
+    width: 70%;
+    align-items: center;
+
+}
+.headerLogo {
+    width: 15%;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.headerLogo img {
+    width: 100%;
+    height: auto;
+}
+.headerNav {
+    width: 100%;
+}
+.navBar {
+    width: 100%;
+    background-color: #C2185B;
+    margin-left: 10%;
+    margin-right: 10%; 
+    border-radius: 50px;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navBar div {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+}
+.navBtn a {
+    font-size: large;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.navBtn:hover {
+    background-color: #F8BBD0; 
+}
+.navBar div a:hover {
+    color: #C2185B;
+}
+.contentDrop:hover .dropElems {
+    display: flex;
+    flex-direction: column;
+}
+.dropElems {
+    display: none;
+}
+.dropElems a {
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+
+/*home page*/
+.body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-left: 5%;  
+    width: 50%;
+    height: 30%;
+    padding: 0;
+    font-size: larger;
+}
+.body form {
+    margin-top: 5%;
+}
+
+/*Matching pages*/
+.matchTableBody {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  
+}
+.matchTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-collapse: collapse;
+    width: 70%;
+    padding: 4%;
+
+}
+.matchTable table {
+    width: 90%;
+    height: 90%;
+}
+.matchTable td, th {
+    padding: 10px;
+}
+#matchName0 {
+    border-top-left-radius: 10px;
+}
+#matchName9 {
+    border-bottom-left-radius: 10px; 
+}
+#matchStat9 {
+    border-bottom-right-radius: 10px;  
+}
+#matchStat0 {
+    border-top-right-radius: 10px;
+}
+#matchName0, #matchName1, #matchName1, #matchName2, #matchName3, #matchName4, #matchName5, #matchName6, #matchName7, #matchName8, #matchName9 {
+    border-left: 2px solid #333333;
+}
+#matchStat0, #matchStat1, #matchStat1, #matchStat2, #matchStat3, #matchStat4, #matchStat5, #matchStat6, #matchStat7, #matchStat8, #matchStat9 {
+    border-right: 2px solid #333333;
+}
+#matchName9, #matchDate9, #matchStat9 {
+    border-bottom: 2px solid #333333;
+}
+#matchName0, #matchDate0, #matchStat0 {
+    border-top: 2px solid #333333;
+}
+#matchName0, #matchDate0, #matchStat0, #matchName1, #matchDate1, #matchStat1, #matchName2, #matchDate2, #matchStat2, #matchName3, #matchDate3, #matchStat3, #matchName4, #matchDate4, #matchStat4, #matchName5, #matchDate5, #matchStat5, #matchName6, #matchDate6, #matchStat6, #matchName7, #matchDate7, #matchStat7, #matchName8, #matchDate8, #matchStat8 {
+    border-bottom: 2px solid #333333;
+}
+
+.r0, .r4, .r9 {
+    background-color: yellow;
+}
+.r1, .r2, .r8 {
+    background-color: green;
+}
+.r3, .r5, .r6, .r7 {
+    background-color: red;
+}
+.matchingBody {
+    margin: 20px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cardContainer {
+    margin: 10px;
+    display: flex;
+}
+.uCard {
+    border: 2px solid #333333b9;
+    margin: 10px;
+    height: 50vh;
+    width: 20vw;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    box-shadow: 0px 3px 7px #00000025, 0px 2px 4px #0000000a;
+
+}
+.uCard:hover {
+    box-shadow: 0 0 20px 4px #ffc80099;
+}
+.uCard img {
+    width: 10vw;
+    height: 19vh;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+.cardAbout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px;
+}
+.cardAbout div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 50%;
+    text-align: center;
+}
+.uCard h2 {
+    font-size: 2rem;
+    font-weight: 400;
+}
+.uCard h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+
+}
+.uCard p {
+    font-size: 0.95rem;
+    font-weight: 300;
+
+}
+.nextBtn {
+    border: 2px solid #333333b9;
+    margin: 10px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    box-shadow: 0px 2px 6px #00000066;
+}
+.nextBtn:hover {
+    box-shadow: inset 0px 2px 6px #00000066;
+}
+.successBody {
+    margin: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.successTop, .successBot {
+    display: flex;
+    margin: 10px;
+}
+.successCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+    padding-right: 40px;
+}
+.successCard:hover {
+    border: 2px solid #333333b9;
+    box-shadow: 0px 2px 6px #00000066;
+    border-radius: 10px;
+}
+.successCard img {
+    width: 10vw;
+    height: 19vh;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+.infoBoxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+.infoBoxes p {
+    border: 1px solid #C2185B;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    color: #C2185B;
+}
+
+/*login / signup style*/
+.bodyText {
+    width: 50%;
+    margin-right: 200px;
+}
+.body h1{
+    margin-bottom: 20px;
+}
+.loginForm{
+    width: 50%;
+    height: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.loginForm div {
+    margin-bottom: 10px;
+}
+.textBoxes {
+    border: solid 1px grey;
+    border-radius: 10px;
+    padding: 10px;
+}
+.itemContainers {
+    display: flex;
+    flex-direction: column;
+}
+.formBtn input {
+    border: solid 1px grey; 
+    border-radius: 10px;
+}
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: solid 1px grey;
+    border-radius: 10px;
+    padding: 10px;
+}
