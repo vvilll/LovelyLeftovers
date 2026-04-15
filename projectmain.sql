@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2026 at 12:51 AM
+-- Generation Time: Apr 15, 2026 at 06:00 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,6 +33,16 @@ CREATE TABLE `edges` (
   `TargetID` int(11) NOT NULL,
   `EdgeType` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `edges`
+--
+
+INSERT INTO `edges` (`EdgeID`, `SourceID`, `TargetID`, `EdgeType`) VALUES
+(1, 6, 7, 'Has_Pref'),
+(2, 6, 8, 'Has_Interest'),
+(3, 6, 9, 'Has_Interest'),
+(4, 6, 10, 'Has_Interest');
 
 -- --------------------------------------------------------
 
@@ -68,7 +78,13 @@ CREATE TABLE `nodes` (
 --
 
 INSERT INTO `nodes` (`NodeID`, `NodeType`, `Name`, `Age`, `Gender`, `Occupation`, `City`, `State`, `Zipcode`, `Email`, `Password`, `Mobile`, `Label`, `Category`, `MinAge`, `MaxAge`, `MatchStatus`, `MatchDate`, `Other`, `ImagePath`) VALUES
-(3, 'User', 'Chris Soto', NULL, 'male', NULL, 'Hayden', 'Idaho', '83835', 'csoto550@aol.com', '1234', '45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(3, 'User', 'Chris Soto', NULL, 'male', NULL, 'Hayden', 'Idaho', '83835', 'csoto550@aol.com', '1234', '45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'User', 'John Doe', NULL, 'male', NULL, 'Hayden', 'Idaho', '83835', 'dsoto5958@yahoo.com', '1234', '42', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'User', 'meow zzzz', 1996, 'male', 'Dishwasher', 'Hayden', 'Idaho', '83835', 'test@email.com', '1234', '78', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'Pref', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'Food', NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'Interest', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Acrobatics', 'Hobby', NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'Interest', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aerobics', 'Hobby', NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'Interest', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Airbrushing', 'Hobby', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -97,13 +113,13 @@ ALTER TABLE `nodes`
 -- AUTO_INCREMENT for table `edges`
 --
 ALTER TABLE `edges`
-  MODIFY `EdgeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EdgeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nodes`
 --
 ALTER TABLE `nodes`
-  MODIFY `NodeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `NodeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
