@@ -1,0 +1,429 @@
+* {
+    font-family: "Chewy", system-ui;
+    color: #4A2C2A;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFF8F5;
+    padding: 1rem;
+}
+
+/*Nav bar*/
+.header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6rem;
+}
+
+.headerNav {
+    display: flex;
+    width: 70%;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.headerLogo {
+    width: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerLogo img {
+    width: 100%;
+    height: auto;
+}
+
+.navBar {
+    width: 100%;
+    background: linear-gradient(135deg, #C2185B, #E85A8C);
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 50px;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px #00000020;
+    padding: 0 1rem;
+}
+
+.navBar div {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.navBtn a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: #FFF8F5;
+    transition: color 0.2s ease;
+    padding: 0.5rem 1rem;
+}
+
+.navBtn:hover {
+    background-color: #FAD4DF;
+    cursor: pointer;
+}
+
+.navBar div a:hover {
+    color: #C2185B;
+}
+
+.contentDrop:hover .dropElems {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropElems {
+    display: none;
+}
+
+.dropElems a {
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0;
+    background-color: #FFE6EC;
+    border-bottom: 1px solid #F5C1D1;
+    transition: background 0.2s ease;
+}
+#matchNavA1 {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+#matchNavA3 {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.dropElems a:hover {
+    background-color: #FAD4DF;
+}
+
+/*home page*/
+.body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    margin-left: 5%;
+    width: 55%;
+    font-size: 1.2rem;
+    gap: 1.5rem;
+}
+
+.body form {
+    margin-top: 2rem;
+}
+
+/*Matching pages*/
+.matchTableBody {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.matchTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-collapse: collapse;
+    width: 75%;
+    padding: 3rem;
+    background-color: #FFF1F4;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px #00000015;
+    gap: 1rem;
+}
+
+.matchTable table {
+    width: 95%;
+    text-align: center;
+}
+
+.matchTable td, th {
+    padding: 1rem;
+    font-size: 1.05rem;
+}
+
+.matchingBody {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.cardContainer {
+    margin: 1rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.uCard {
+    border: 2px solid #E8C7C7;
+    height: 55vh;
+    width: 22vw;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFF9F9;
+    box-shadow: 0px 3px 7px #00000020;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    padding: 1.5rem;
+    gap: .5rem;
+}
+
+.uCard:hover {
+    box-shadow: 0 0 20px 4px #FFB6C199;
+    transform: translateY(-4px);
+    cursor: pointer;
+}
+
+.uCard img {
+    width: 11vw;
+    height: 20vh;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #F5C1D1;
+}
+
+.cardAbout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+    gap: 1.5rem;
+}
+
+.cardAbout div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.aboutFood { 
+    width: 35%; 
+}
+.aboutHobbies { 
+    width: 65%; 
+}
+
+.uCard h2 {
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: #C2185B;
+}
+
+.uCard h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.uCard p {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.nextBtn {
+    border: 2px solid #E8C7C7;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    background-color: #FFF9F9;
+    box-shadow: 0px 2px 6px #00000030;
+    transition: box-shadow 0.2s ease, background 0.2s ease;
+    font-size: 1.1rem;
+}
+
+.nextBtn:hover {
+    box-shadow: inset 0px 2px 6px #00000030;
+    background-color: #FFE6EC;
+    cursor: pointer;
+}
+
+.disappear {
+    animation: dissolve 0.1s steps(20) forwards;
+}
+
+@keyframes dissolve {
+    0% { opacity: 1; clip-path: inset(0 0 0 0); }
+    100% { opacity: 0; clip-path: inset(100% 0 100% 0); }
+}
+
+/*Success page*/
+.successHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.successHeaderBody {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.successHeaderBody:hover {
+    cursor: pointer;
+}
+.successBody {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.successTop, .successBot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.successCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem;
+    border: 2px solid transparent;
+    width: 31%;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    gap: 1.5rem;
+}
+
+.successCard:hover {
+    border: 2px solid #E8C7C7;
+    box-shadow: 0px 2px 6px #00000030;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.successCard img {
+    width: 11vw;
+    height: 20vh;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #F5C1D1;
+}
+
+.infoBoxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.infoBoxes p {
+    border: 1px solid #C2185B;
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+    color: #C2185B;
+    background-color: #FFE6EC;
+}
+
+#user5Match {
+    align-items: start;
+}
+
+.topUCard {
+    display: flex;
+    border: solid 1px #C7A4A4;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    background-color: #FFE6EC;
+    transition: background 0.2s ease;
+    font-size: 1rem;
+    width: 50%;
+}
+
+.topUCardBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topUCardDesc {
+    display: flex;
+    flex-direction: column;
+}
+
+/*login/signup*/
+.bodyText {
+    width: 55%;
+    margin-right: 10%;
+}
+
+.body h1 {
+    margin-bottom: 1.5rem;
+    color: #C2185B;
+}
+
+.loginForm {
+    width: 55%;
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.textBoxes {
+    border: solid 1px #C7A4A4;
+    border-radius: 10px;
+    padding: 0.75rem;
+    background-color: #FFF9F9;
+}
+
+.itemContainers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.formBtn input {
+    border: solid 1px #C7A4A4;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    background-color: #FFE6EC;
+    transition: background 0.2s ease;
+    font-size: 1rem;
+}
+
+.formBtn input:hover {
+    background-color: #FAD4DF;
+    cursor: pointer;
+}
+
+input[type="date"] {
+    appearance: none;
+    border: solid 1px #C7A4A4;
+    border-radius: 10px;
+    padding: 0.75rem;
+    background-color: #FFF9F9;
+}
+
+/*Account*/
+.mailPhoneContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.mailPhoneContainer div {
+    width: 50%;
+}
+
+.frmGroup {
+    border: solid 1px #C7A4A4;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #FFF9F9;
+}
