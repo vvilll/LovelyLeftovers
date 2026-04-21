@@ -53,6 +53,43 @@ foreach($currentMatchIDs as $index => $matchID)
 
         $check4stmt->close();
     }
+// users with >= 5 matches
+$nUsers = [];
+$nstmt = $conn->prepare("SELECT n.Name , COUNT(e.SourceID) AS NumberOfMatches FROM nodes n JOIN edges e ON n.NodeID = e.TargetID WHERE e.EdgeType = 'Matched' AND n.NodeType = 'User' GROUP BY n.NodeID, n.Name HAVING COUNT(e.SourceID) >= 5 ORDER BY NumberOfMatches DESC");
+$nstmt->execute();
+$result = $nstmt->get_result();
+while($row = $result->fetch_assoc())
+    {
+        $nUsers[] = $row;
+    }
+$nstmt->close();
+
+//mysql for users with most matches
+$topUsers = [];
+$topstmt = $conn->prepare("SELECT n.NodeID, n.Name , COUNT(e.SourceID) AS NumberOfMatches FROM nodes n JOIN edges e ON n.NodeID = e.TargetID WHERE e.EdgeType = 'Matched' AND n.NodeType = 'User' GROUP BY n.NodeID, n.Name ORDER BY NumberOfMatches DESC LIMIT 5");
+$topstmt->execute();
+$result = $topstmt->get_result();
+while($row = $result->fetch_assoc())
+    {
+        $topUsers[] = $row;
+    }
+$topstmt->close();
+foreach($topUsers as &$topUser)
+    {
+        $topUser['matchedUsers'] = [];
+        $stmt = $conn->prepare("SELECT n.NodeID, n.Name FROM nodes n JOIN edges e ON n.NodeID = e.TargetID WHERE e.EdgeType = 'Matched' AND e.SourceID IN (SELECT SourceID FROM edges WHERE TargetID = ? AND EdgeType = 'Matched') AND n.NodeType = 'User' AND n.NodeID != ?");
+    $stmt->bind_param("ii", $topUser['NodeID'], $topUser['NodeID']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $topUser['matchedUsers'][] = $row;
+    }
+
+    $stmt->close();
+
+    }
+    unset($topUser);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,13 +153,15 @@ foreach($currentMatchIDs as $index => $matchID)
     </div>
     <div class="successBody" id="user5Match" style="display: none;">
        <div class="topUCard">
+        <?php foreach($nUsers as $users):?>
             <div class="topUCardBody">
                 <img src="images/icon.png">
                 <div class="TopUCardDesc">
-                    <h1>Name</h1>
-                    <p>Match Count</p>
+                    <h1><?php echo htmlspecialchars($users['Name']) ;?></h1>
+                    <p><?php echo $users['NumberOfMatches'];?></p>
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="successBody" id="topUsers" style="display: none;">
@@ -134,64 +173,64 @@ foreach($currentMatchIDs as $index => $matchID)
                     <th>Match Count</th>
                 </tr>
                 <tr class="r0">
-                    <td id="matchName0">Jane Doe</td>
+                    <td id="matchName0"><?php echo htmlspecialchars($topUsers[0]['Name']);?></td>
                     <td></td>
-                    <td id="matchStat0">50</td>
+                    <td id="matchStat0"><?php echo htmlspecialchars($topUsers[0]['NumberOfMatches']);?></td>
                 </tr>
-                <!-- For each Match-->
+                <?php foreach($topUsers[0]['matchedUsers'] as $matches):?>
                 <tr>
                     <td>-</td>
-                    <td>Name here</td>
+                    <td><?php echo htmlspecialchars($matches['Name']);?></td>
                 </tr>
-                <!-- End for each -->
+                <?php endforeach; ?>
 
                 <tr class="r1">
-                    <td id="matchName1">John Doe</td>
+                    <td id="matchName1"><?php echo htmlspecialchars($topUsers[1]['Name']);?></td>
                     <td></td>
-                    <td id="matchStat1">48</td>
+                    <td id="matchStat1"><?php echo htmlspecialchars($topUsers[1]['NumberOfMatches']);?></td>
                 </tr>
-                <!-- For each Match-->
+                <?php foreach($topUsers[1]['matchedUsers'] as $matches):?>
                 <tr>
                     <td>-</td>
-                    <td>Name here</td>
+                    <td><?php echo htmlspecialchars($matches['Name']);?></td>
                 </tr>
-                <!-- End for each -->
+                <?php endforeach; ?>
 
                 <tr class="r2">
-                    <td id="matchName2">Jane Doe</td>
+                    <td id="matchName2"><?php echo htmlspecialchars($topUsers[2]['Name']);?></td>
                     <td></td>
-                    <td id="matchStat2">30</td>
+                    <td id="matchStat2"><?php echo htmlspecialchars($topUsers[2]['NumberOfMatches']);?></td>
                 </tr>
-                <!-- For each Match-->
+                <?php foreach($topUsers[2]['matchedUsers'] as $matches):?>
                 <tr>
                     <td>-</td>
-                    <td>Name here</td>
+                    <td><?php echo htmlspecialchars($matches['Name']);?></td>
                 </tr>
-                <!-- End for each -->
+                <?php endforeach; ?>
 
                 <tr class="r3">
-                    <td id="matchName3">John Doe</td>
+                    <td id="matchName3"><?php echo htmlspecialchars($topUsers[3]['Name']);?></td>
                     <td></td>
-                    <td id="matchStat3">25</td>
+                    <td id="matchStat3"><?php echo htmlspecialchars($topUsers[3]['NumberOfMatches']);?></td>
                 </tr>
-                <!-- For each Match-->
+                <?php foreach($topUsers[3]['matchedUsers'] as $matches):?>
                 <tr>
                     <td>-</td>
-                    <td>Name here</td>
+                    <td><?php echo htmlspecialchars($matches['Name']);?></td>
                 </tr>
-                <!-- End for each -->
+                <?php endforeach; ?>
 
                 <tr class="r4">
-                    <td id="matchName4">Jane Doe</td>
+                    <td id="matchName4"><?php echo htmlspecialchars($topUsers[4]['Name']);?></td>
                     <td></td>
-                    <td id="matchStat4">20</td>
+                    <td id="matchStat4"><?php echo htmlspecialchars($topUsers[4]['NumberOfMatches']);?></td>
                 </tr>
-                <!-- For each Match-->
+                <?php foreach($topUsers[4]['matchedUsers'] as $matches):?>
                 <tr>
                     <td>-</td>
-                    <td>Name here</td>
+                    <td><?php echo htmlspecialchars($matches['Name']);?></td>
                 </tr>
-                <!-- End for each -->
+                <?php endforeach; ?>
             </table>
         </div>
     </div>
