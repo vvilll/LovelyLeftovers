@@ -6,7 +6,7 @@ $email = $_SESSION['email'];
 $nodeID = $_SESSION['NodeID'];
 $currentMatchIDs =[];
 $matchesAll = [];
-$matchInfo = [];
+$matchesInfo = [];
 //list of NodeIDs of matches related to logged in user
 $checkstmt = $conn->prepare("SELECT SourceID FROM edges WHERE TargetID = ? AND EdgeType = 'Matched'");
 $checkstmt->bind_param("i", $nodeID);
@@ -50,6 +50,44 @@ foreach($currentMatchIDs as $index => $matchID)
         $check4stmt->close();
     }
 ?>
+
+<?php
+//Graph Data
+$graphElements = [];
+
+$graphElements[] = [
+    "data" => [
+        "id" => "user_" . $nodeID,
+        "label" => "You",
+        "type" => "currentUser"
+    ]
+];
+
+foreach ($matchesInfo as $user) {
+    $matchedUserId = "user_" . $user["NodeID"];
+
+    $graphElements[] = [
+        "data" => [
+            "id" => $matchedUserId,
+            "label" => $user["Name"],
+            "type" => "matchedUser",
+            "city" => $user["City"],
+            "state" => $user["State"],
+            "occupation" => $user["Occupation"]
+        ]
+    ];
+
+    $graphElements[] = [
+        "data" => [
+            "id" => "edge_" . $nodeID . "_" . $user["NodeID"],
+            "source" => "user_" . $nodeID,
+            "target" => $matchedUserId,
+            "label" => isset($user["matchDate"]) ? date("m/d/Y", strtotime($user["matchDate"])) : ""
+        ]
+    ];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +98,7 @@ foreach($currentMatchIDs as $index => $matchID)
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
-    <!-- <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script> -->
+    <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -149,7 +187,89 @@ foreach($currentMatchIDs as $index => $matchID)
             </div>
         </div>
     </div>
-    <div id="cy" style="width: 100%; height: 100%"></div>
+    <div id="cy" style="width: 100%; height: 500px; border: 1px solid #ccc; margin-top: 20px;"></div>
+
+    <script>
+    const graphElements = <?php echo json_encode($graphElements, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
+
+    const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: graphElements,
+
+        style: [
+            {
+                selector: 'node',
+                style: {
+                    'label': 'data(label)',
+                    'color': '#fff',
+                    'text-valign': 'center',
+                    'text-halign': 'center',
+                    'font-size': 12,
+                    'width': 55,
+                    'height': 55
+                }
+            },
+            {
+                selector: 'node[type = "currentUser"]',
+                style: {
+                    'background-color': '#C2185B',
+                    'shape': 'ellipse'
+                }
+            },
+            {
+                selector: 'node[type = "matchedUser"]',
+                style: {
+                'background-color': '#F48FB1',
+                'shape': 'round-rectangle',
+                'width': 140,
+                'height': 50,
+                'text-wrap': 'wrap',
+                'text-max-width': 120,
+                'padding': '10px'
+                }
+            },
+            {
+                selector: 'edge',
+                style: {
+                'label': 'data(label)',
+                'width': 3,
+                'line-color': '#999',
+                'target-arrow-color': '#999',
+                'target-arrow-shape': 'triangle',
+                'curve-style': 'bezier',
+                'font-size': 10,
+                'color': '#333',
+                'text-rotation': 'none',
+                'text-margin-y': -12,
+                'text-background-color': '#ffffff',
+                'text-background-opacity': 1,
+                'text-background-padding': '2px',
+                'text-border-opacity': 1,
+                'text-border-width': 1,
+                'text-border-color': '#cccccc'
+                }
+            }
+        ],
+
+        layout: {
+            name: 'cose',
+            animate: true
+        }
+    });
+
+    cy.on('tap', 'node', function (evt) {
+        const node = evt.target;
+        const data = node.data();
+
+        if (data.type === 'matchedUser') {
+            alert(
+                data.label + "\n" +
+                (data.occupation ? data.occupation + "\n" : "") +
+                ((data.city && data.state) ? data.city + ", " + data.state : "")
+            );
+        }
+    });
+</script>
 </body>
 <script>
     const currentPath = window.location.pathname.split("/").pop();

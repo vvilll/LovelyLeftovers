@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $state = test_input($_POST["state"]);
         $zipcode = test_input($_POST["Zip"]);
         $job = test_input($_POST["Occupation"]);
-        $food = test_input($_POST["fFood"]);
+        $food = test_input($_POST["Food"]);
         $emailcheck = false;
         $checkSql = "SELECT NodeID FROM nodes WHERE Email = ? AND NodeID != ? LIMIT 1";
         if ($checkStmt = $conn->prepare($checkSql)) {
